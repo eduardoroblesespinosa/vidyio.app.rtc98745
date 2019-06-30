@@ -303,6 +303,13 @@
     </div>
     <SCRIPT>
 
+
+        var connection = new RTCMultiConnection();
+
+        // https://github.com/muaz-khan/WebRTC-Experiment/tree/master/socketio-over-nodejs
+        var SIGNALING_SERVER = 'https://socketio-over-nodejs2.herokuapp.com:443/';
+        connection.openSignalingChannel = function (config) {
+            var channel = config.channel || connection.channel || 'default-namespace';
 var user = cookie.get('user');
 if (!user) {
 
@@ -315,13 +322,6 @@ if (!user) {
     cookie.set('user', user);
   }
 }
-        var connection = new RTCMultiConnection();
-
-        // https://github.com/muaz-khan/WebRTC-Experiment/tree/master/socketio-over-nodejs
-        var SIGNALING_SERVER = 'https://socketio-over-nodejs2.herokuapp.com:443/';
-        connection.openSignalingChannel = function (config) {
-            var channel = config.channel || connection.channel || 'default-namespace';
-            
 
             io.connect(SIGNALING_SERVER).emit('new-channel', {
                 channel: channel,
