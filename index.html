@@ -311,21 +311,7 @@
         var SIGNALING_SERVER = 'https://socketio-over-nodejs2.herokuapp.com:443/';
         connection.openSignalingChannel = function (config) {
             var channel = config.channel || connection.channel || 'default-namespace';
-  var user = cookie.get('user');
-  if (!user) {
-
-  // Ask for the username if there is none set already
-  user = prompt('Choose a username:');
-  if (!user) {
-    alert('We cannot work with you like that!');
-  } else {
-    // Store it in the cookies for future use
-    cookie.set('user', user);
-  }
-}
-            
-
-            var sender = user;
+            var sender = Math.round(Math.random() * 9999999999) + 9999999999;
 
             io.connect(SIGNALING_SERVER).emit('new-channel', {
                 channel: channel,
