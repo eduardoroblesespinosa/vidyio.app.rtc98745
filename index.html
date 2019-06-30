@@ -303,8 +303,16 @@
         
     </div>
     <SCRIPT>
-var user = cookie.get('user');
-if (!user) {
+
+
+        var connection = new RTCMultiConnection();
+
+        // https://github.com/muaz-khan/WebRTC-Experiment/tree/master/socketio-over-nodejs
+        var SIGNALING_SERVER = 'https://socketio-over-nodejs2.herokuapp.com:443/';
+        connection.openSignalingChannel = function (config) {
+            var channel = config.channel || connection.channel || 'default-namespace';
+  var user = cookie.get('user');
+  if (!user) {
 
   // Ask for the username if there is none set already
   user = prompt('Choose a username:');
@@ -315,13 +323,8 @@ if (!user) {
     cookie.set('user', user);
   }
 }
+            
 
-        var connection = new RTCMultiConnection();
-
-        // https://github.com/muaz-khan/WebRTC-Experiment/tree/master/socketio-over-nodejs
-        var SIGNALING_SERVER = 'https://socketio-over-nodejs2.herokuapp.com:443/';
-        connection.openSignalingChannel = function (config) {
-            var channel = config.channel || connection.channel || 'default-namespace';
             var sender = user;
 
             io.connect(SIGNALING_SERVER).emit('new-channel', {
