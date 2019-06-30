@@ -322,7 +322,7 @@ if (!user) {
         var SIGNALING_SERVER = 'https://socketio-over-nodejs2.herokuapp.com:443/';
         connection.openSignalingChannel = function (config) {
             var channel = config.channel || connection.channel || 'default-namespace';
-            var sender = user.value;
+            var sender = user;
 
             io.connect(SIGNALING_SERVER).emit('new-channel', {
                 channel: channel,
