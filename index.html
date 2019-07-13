@@ -159,7 +159,7 @@
             color: #0a0a0a;
             font-family: 'Helvetica Neue', 'Arial', 'Helvetica', 'Sans-Serif';
             font-size: 12px;
-            float: left;
+            
         }
 
         #chat-output,
@@ -167,6 +167,16 @@
             margin: 0 0 0 .4em;
             max-height: 12em;
             overflow: auto;
+        }
+        #avatar {
+            float: left;
+            margin: 0 10px 0 0;
+            height: 35px;
+            border-radius: 99px;
+            max-width: 35px;
+            max-height: 70px;
+            overflow: hidden;
+
         }
 
         .data-box input {
@@ -298,6 +308,9 @@
             <div class="col-sm-12">
               
                 <div id="chat-output">
+                    <div class="avatar">
+                        <img src=""/>
+                    </div>
                  </div>
                     <div id="file-progress">
                     </div>
